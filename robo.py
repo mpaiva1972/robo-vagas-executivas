@@ -7,9 +7,9 @@ from datetime import datetime
 import time
 
 # SUAS INFORMAÇÕES (você vai preencher depois)
-SEU_EMAIL = "seuemail@gmail.com"  # ← MUDE AQUI
-SUA_SENHA_APP = ""  # ← vamos criar mais tarde
-EMAIL_DESTINO = "seuemail@gmail.com"  # ← para onde enviar as vagas
+SEU_EMAIL = "paiva.consult@gmail.com"  # ← MUDE AQUI
+SUA_SENHA_APP = "ydpc qbvu pxtc uzlt"  # ← vamos criar mais tarde
+EMAIL_DESTINO = "paiva.consult@gmail.com"  # ← para onde enviar as vagas
 
 # Palavras-chave das vagas que você quer
 PALAVRAS_CHAVE = [
