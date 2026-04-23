@@ -12,9 +12,9 @@ from indeed_scraper import buscar_vagas_indeed
 from gupy_scraper import buscar_vagas_gupy
 
 # ===== CONFIGURAÇÕES (VOCÊ MUDA AQUI) =====
-SEU_EMAIL = "seuemail@gmail.com"  # ← MUDE
-SUA_SENHA_APP = ""  # ← COLE SUA SENHA DO APP
-EMAIL_DESTINO = "seuemail@gmail.com"  # ← MUDE
+SEU_EMAIL = "paiva.consult@gmail.com"  # ← seu e-mail
+SUA_SENHA_APP = "ydpc qbvu pxtc uzlt"  # ← senha do app Gmail
+EMAIL_DESTINO = "paiva.consult@gmail.com"  # ← onde receber as vagas
 
 # Lista de sites para fallback (caso raspador falhe)
 SITES_FALLBACK = [
