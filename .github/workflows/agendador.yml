@@ -2,9 +2,9 @@ name: Robô de Vagas Executivas
 
 on:
   schedule:
-    # Isso roda todo dia às 6h da manhã (horário de Brasília)
-    - cron: '0 9 * * *'  # 9h UTC = 6h BRT
-  workflow_dispatch:  # permite rodar manualmente
+    # Roda todo dia às 6h da manhã (horário de Brasília)
+    - cron: '0 9 * * *'
+  workflow_dispatch:
 
 jobs:
   buscar-vagas:
@@ -12,12 +12,12 @@ jobs:
     
     steps:
     - name: Pegar o código do robô
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4  # ← mudei de v3 para v4
       
     - name: Configurar Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5  # ← mudei de v4 para v5
       with:
-        python-version: '3.9'
+        python-version: '3.12'  # ← versão mais nova
         
     - name: Instalar bibliotecas necessárias
       run: |
