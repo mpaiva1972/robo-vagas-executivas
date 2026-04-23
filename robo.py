@@ -31,12 +31,12 @@ SITES_BUSCA = [
     },
     {
         "nome": "Indeed",
-        "url": "https://www.indeed.com.br/empregos?q={palavra}&l=Brasil",
+        "url": "https://br.indeed.com/jobs?q={palavra}&l=Brasil",
         "funciona": True
     },
     {
         "nome": "InfoJobs",
-        "url": "https://www.infojobs.com.br/vagas.aspx?Palavra={palavra}",
+        "url": "https://www.infojobs.com.br/empregos.aspx?palabra={palavra}",
         "funciona": True
     },
     {
@@ -46,32 +46,22 @@ SITES_BUSCA = [
     },
     {
         "nome": "Gupy",
-        "url": "https://portal.gupy.io/jobs?term={palavra}",
+        "url": "https://portal.gupy.io/job-search/term={palavra}",
         "funciona": True
     },
     {
         "nome": "Solides",
-        "url": "https://www.solides.com.br/vagas?q={palavra}",
+        "url": "https://vagas.solides.com.br/vagas/todos/{palavra}",
         "funciona": True
     },
     {
         "nome": "Jobijoba",
-        "url": "https://www.jobijoba.com.br/emprego?search={palavra}",
+        "url": "https://www.jobijoba.com.br/query/?what={palavra}",
         "funciona": True
     },
     {
         "nome": "Nerdin",
-        "url": "https://nerdin.com.br/vagas?search={palavra}",
-        "funciona": True
-    },
-    {
-        "nome": "Numen",
-        "url": "https://numen.com.br/vagas?q={palavra}",
-        "funciona": True
-    },
-    {
-        "nome": "Plooral",
-        "url": "https://plooral.com/vagas?termo={palavra}",
+        "url": "https://nerdin.com.br/vagas.php?busca_vaga={palavra}",
         "funciona": True
     }
 ]
