@@ -23,24 +23,38 @@ PALAVRAS_CHAVE = [
 ]
 
 def buscar_vagas_free():
-    """Busca vagas do site REMOTO (grátis, sem API paga)"""
-    print("🔍 Buscando vagas...")
+    """Busca vagas REAIS do site Vagas.com"""
+    import requests
+    from bs4 import BeautifulSoup
     
-    # Usando o site 'Remoto' que é gratuito e permite scraping
     vagas_encontradas = []
     
     for cargo in PALAVRAS_CHAVE:
-        # Simula uma busca - na prática aqui você colocaria um site real
-        # Como é grátis, vou te dar um exemplo funcional com dados de exemplo
-        vagas_encontradas.append({
-            "titulo": f"{cargo} em Empresa Tech",
-            "empresa": "Tech Corp",
-            "link": f"https://www.linkedin.com/jobs/search/?keywords={cargo.replace(' ', '%20')}",
-            "data": datetime.now().strftime("%Y-%m-%d")
-        })
-        time.sleep(1)  # pausa para não sobrecarregar
+        # Busca no Vagas.com
+        url_busca = f"https://www.vagas.com.br/vagas/{cargo.replace(' ', '-').lower()}"
+        
+        try:
+            resposta = requests.get(url_busca, timeout=10)
+            if resposta.status_code == 200:
+                sopa = BeautifulSoup(resposta.text, 'html.parser')
+                
+                # Pega os primeiros resultados
+                vagas = sopa.find_all('div', class_='vagas-item')[:3]
+                
+                for vaga in vagas:
+                    titulo = vaga.find('a', class_='vaga-title')
+                    if titulo:
+                        vagas_encontradas.append({
+                            "titulo": titulo.text.strip(),
+                            "empresa": "Ver no site",
+                            "link": "https://www.vagas.com.br" + titulo['href'],
+                            "data": datetime.now().strftime("%Y-%m-%d")
+                        })
+        except Exception as erro:
+            print(f"Erro ao buscar '{cargo}': {erro}")
+        
+        time.sleep(2)  # Respeita o site
     
-    print(f"✅ Encontradas {len(vagas_encontradas)} vagas")
     return vagas_encontradas
 
 def enviar_email(vagas):
