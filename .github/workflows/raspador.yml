@@ -1,0 +1,41 @@
+name: Robô Raspador de Vagas (Teste)
+
+on:
+  schedule:
+    # Roda todo dia às 6h da manhã
+    - cron: '0 9 * * *'
+  workflow_dispatch:  # Permite rodar manualmente
+
+jobs:
+  raspar-vagas:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Baixar código
+      uses: actions/checkout@v4
+      
+    - name: 🐍 Configurar Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: 📦 Instalar dependências
+      run: |
+        pip install -r requirements.txt
+        playwright install chromium
+        playwright install-deps
+        
+    - name: 🤖 Executar robô raspador
+      env:
+        LINKEDIN_EMAIL: ${{ secrets.LINKEDIN_EMAIL }}
+        LINKEDIN_SENHA: ${{ secrets.LINKEDIN_SENHA }}
+      run: python robo_raspador.py
+      
+    - name: 💾 Salvar log (opcional)
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: logs-raspador
+        path: |
+          *.log
+          *.json
